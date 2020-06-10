@@ -9,4 +9,4 @@ before_install:
 #tell travis how to run our test
 #series of command when our test needs to be executed
 script:
-  - docker run jjariwala/docker-react npm run test -- --coverage
+  - docker run -e CI=true jjariwala/docker-react npm run test -- --coverage
