@@ -1,0 +1,12 @@
+## We need super user permission
+sudo: required
+## Install copy of docker into travis ci
+services:
+  - docker
+# series of steps that need to occure before the test run
+before_install:
+  - docker build -t jjariwala/docker-react -f Dockerfile.dev .
+#tell travis how to run our test
+#series of command when our test needs to be executed
+script:
+  - docker run jjariwala/docker-react npm run test -- --coverage
