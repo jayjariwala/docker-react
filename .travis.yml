@@ -1,4 +1,3 @@
-language: generic
 ## We need super user permission
 sudo: required
 ## Install copy of docker into travis ci
@@ -14,11 +13,13 @@ script:
 
 deploy:
   provider: elasticbeanstalk
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key: "$AWS_SECRET"
   region: "us-east-1"
   app: "docker-react"
   env: "DockerReact-env"
   bucket_name: "elasticbeanstalk-us-east-1-560166993380"
+  bucket_path: "docker-react"
   on:
     branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET"
